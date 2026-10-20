@@ -6,11 +6,11 @@ export default function EventDetail() {
   const { id } = useParams();
 
   return (
-    <SectionCarousel label={`Detail event ${id}`}>
-      <Card title={`Detil Event #${id}`}>
+    <SectionCarousel label={`Detail event`}>
+      <Card title={`Detail Event`}>
         <p>
-          [Placeholder: Informasi lengkap mengenai event yang dipilih, tanggal,
-          lokasi, dan deskripsi kegiatan]
+          Waktu Pelaksanaan Kegiatan adalah 17 November 2026 yang berlokasi di
+          Gunung Rinjani
         </p>
         <p>
           <Link to="/proyek-event" className="card__link">
