@@ -4,6 +4,7 @@
    ========================================================================== */
 
 :root {
+  /* Tema terang (default) */
   --brown: #8f5732;
   --sand: #d7c19c;
   --sage: #71948e;
@@ -11,10 +12,33 @@
   --logo-green: #2e7d4f;
   --ink: #22302b;
 
+  --arrow-fg: #e6d5c0;
+  --link-hover: #4a2a12;
+  --dot-idle: rgba(143, 87, 50, 0.35);
+
   --font-display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
   --font-body: Arial, "Helvetica Neue", Helvetica, sans-serif;
 
   --shadow-hard: -4px 6px 7px rgba(0, 0, 0, 0.55);
+
+  color-scheme: light;
+}
+
+/* ---------- Tema gelap ---------- */
+
+:root[data-theme="dark"] {
+  --brown: #4a2f1c;
+  --sand: #33383c;
+  --sage: #36524e;
+  --paper: #1b1e20;
+  --logo-green: #379d68;
+  --ink: #e8e2d6;
+
+  --arrow-fg: #f0ede6;
+  --link-hover: #f0c9a0;
+  --dot-idle: rgba(232, 226, 214, 0.35);
+
+  color-scheme: dark;
 }
 
 *,
@@ -64,8 +88,10 @@ a {
 /* ---------- Header: judul + tempat logo (8F5732) ---------- */
 
 .site-header {
-  display: grid;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
   padding: clamp(0.6rem, 1.6vw, 1rem) clamp(1rem, 3vw, 2rem);
   background: var(--brown);
   border-radius: 0 0 clamp(2rem, 6vw, 4.5rem) clamp(2rem, 6vw, 4.5rem);
@@ -104,6 +130,32 @@ a {
   line-height: 1;
   letter-spacing: 0.01em;
   color: var(--ink);
+}
+
+/* ---------- Toggle tema (terang/gelap) ---------- */
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: clamp(2.75rem, 6.5vw, 3.5rem);
+  aspect-ratio: 1;
+  padding: 0;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1;
+  color: var(--ink);
+  background: var(--sand);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.15s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  filter: brightness(1.08);
 }
 
 /* ---------- Navigasi halaman (D7C19C) ---------- */
@@ -147,6 +199,7 @@ a {
 
 .nav__tab:focus-visible,
 .site-header__brand:focus-visible,
+.theme-toggle:focus-visible,
 .carousel__arrow:focus-visible,
 .carousel__dot:focus-visible,
 .card__link:focus-visible {
@@ -220,7 +273,7 @@ a {
   padding: 0 0 0.2rem;
   font-size: 2rem;
   line-height: 1;
-  color: var(--paper);
+  color: var(--arrow-fg);
   background: var(--brown);
   border: 0;
   border-radius: 50%;
@@ -266,7 +319,7 @@ a {
   content: "";
   width: 0.7rem;
   height: 0.7rem;
-  background: rgba(143, 87, 50, 0.35);
+  background: var(--dot-idle);
   border-radius: 999px;
   transition:
     width 0.25s ease,
@@ -373,7 +426,7 @@ a {
 }
 
 .card__link:hover {
-  color: #4a2a12;
+  color: var(--link-hover);
 }
 
 .card__text .card__highlight {
