@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const LOGO_SRC = "/logo.svg";
 
@@ -11,6 +12,7 @@ export default function Header() {
         </span>
         <span className="site-header__title">MAPALA</span>
       </Link>
+      <ThemeToggle />
     </header>
   );
 }
